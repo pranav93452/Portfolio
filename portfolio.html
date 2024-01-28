@@ -21,8 +21,14 @@
                 </ul>
             </nav>
             <div class="header-text">
-                <p>Full Stack Developer</p>
-                <h1>Hello, I'am <span>Pranav</span><br>jadhav from India.</h1>
+                <p class="fade-in-up"><span>Full Stack Developer</span></p>
+                <h3 class="fade-in-up" >
+                    <span class="typewriter1"></span><br>
+                    <span class="typewriter2"></span>
+                </h3>
+                <div class="portfolio-message btn" onclick="scrollToAboutMe()">
+                    Explore
+                </div>
             </div>
         </div>
 
@@ -156,7 +162,7 @@
     }
 </script>
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyQ15DtlufF3ZFC2ZA5b2cVujE2baQ7YD73maDUTv77w6pcE-vSfCwi9pXM2rjXTfoh/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxqRTeBQ0ficmFeGwx9jV149Plw3wqlmouzkYY4DGxIpqK90z85xxQnI9aikraXrR4T/exec';
     const form = document.forms['submit-to-google-sheet']
     const msg=document.getElementById("msg")
     form.addEventListener('submit', e => {
@@ -172,5 +178,46 @@
         .catch(error => console.error('Error!', error.message))
     })
   </script>
+  <script>
+        // Your existing script for tab and form submission
+
+        var typewriterText1 = document.querySelector('.typewriter1');
+        var typewriterText2 = document.querySelector('.typewriter2');
+        var portfolioMessage = document.querySelector('.portfolio-message');
+        var textToType1 = "Hello, I am Pranav Jadhav from India.";
+        var textToType2 = "Explore my portfolio below.";
+
+        typewriterText1.innerHTML = ''; // Clear the text
+        typewriterText2.innerHTML = ''; // Clear the text
+
+        function typeWriterEffect() {
+            textToType1.split('').forEach((char, index) => {
+                setTimeout(() => {
+                    typewriterText1.innerHTML += char;
+                }, 100 * index);
+            });
+
+            setTimeout(() => {
+                textToType2.split('').forEach((char, index) => {
+                    setTimeout(() => {
+                        typewriterText2.innerHTML += char;
+                    }, 100 * index);
+                });
+
+                setTimeout(() => {
+                    portfolioMessage.style.display = 'block';
+                }, textToType2.length * 100);
+
+            }, textToType1.length * 100);
+        }
+
+        document.addEventListener('DOMContentLoaded', typeWriterEffect);
+
+        function scrollToAboutMe() {
+            var aboutMeSection = document.getElementById('about');
+            aboutMeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
 </body>
 </html>
